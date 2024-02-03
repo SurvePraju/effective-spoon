@@ -1,3 +1,239 @@
 body {
     margin: 0;
+    background-color: rgb(36, 37, 47);
+    height: 100vh;
+    font-family: sans-serif;
+}
+
+
+.row-flex {
+    display: flex;
+    flex-direction: row;
+}
+
+/* .head-title {} */
+
+.nav {
+
+    width: 3vw;
+    height: 100vh;
+    /* border: 1px solid white; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0;
+}
+
+.icons-temp {
+    margin: 10px;
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-bottom: 40px;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: white;
+
+}
+
+
+.all-contacts {
+    background-color: rgb(45, 47, 59);
+
+    width: 30vw;
+    border-radius: 20px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+
+}
+
+.heading {
+    color: whitesmoke;
+    margin-left: 30px;
+    display: block;
+    height: 4vh;
+}
+
+/* #search {
+
+    background-color: antiquewhite;
+    width: 100%;
+    height: 10px;
+} */
+
+#search {
+    background-color: rgb(53, 55, 69);
+    width: 95%;
+    height: 5vh;
+    margin-left: 2.5%;
+    border: 1px solid white;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-radius: 5px;
+
+}
+
+input[type=search] {
+    background-color: rgb(53, 55, 69);
+    border: 0;
+    outline: 0;
+    padding: 10px;
+    color: white;
+    height: 100%;
+    width: 90%;
+    position: relative;
+    right: 0;
+}
+
+.users {
+    margin-top: 20px;
+
+    width: 100%;
+    height: 70vh;
+    overflow-y: scroll;
+
+
+}
+
+/* .single-user {
+    background-color: aliceblue;
+    height: 100px;
+    width: 100%;
+} */
+
+::-webkit-scrollbar {
+    width: 2px;
+
+}
+
+::-webkit-scrollbar-track {
+    background: rgb(45, 47, 59);
+
+}
+
+body::-webkit-scrollbar {
+    width: 1px;
+
+
+}
+
+
+.chatbox {
+    border-radius: 20px;
+    background-color: rgb(45, 47, 59);
+    width: 67vw;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left: 1px solid rgb(23, 23, 26);
+    height: 100vh;
+}
+
+.chatbox-title {
+    margin-left: 5%;
+    width: 90%;
+    height: 12vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chatbox button {
+    background-color: rgb(45, 47, 59);
+    border: 0;
+    padding: 10px;
+    color: white;
+}
+
+.chatbox button:hover {
+    background-color: rgb(58, 60, 76);
+    ;
+}
+
+.messages {
+    height: 79vh;
+    background-color: rgb(48, 50, 63);
+    border-top: 1px solid rgb(23, 23, 26);
+    border-bottom: 1px solid rgb(23, 23, 26);
+
+}
+
+.type-messages {
+    height: 9vh;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(45, 47, 59);
+    justify-content: space-between;
+    align-items: center;
+}
+
+.type-messages input[type=text] {
+    width: 100%;
+    height: 60%;
+    background-color: rgb(45, 47, 59);
+    outline: 0;
+    border: 0;
+    padding: 5px;
+    padding-left: 10px;
+    font-size: 1rem;
+    color: white;
+    border-radius: 3px;
+}
+
+.type-messages input[type=text]:hover {
+    background-color: rgb(52, 55, 71);
+    border-radius: 3px;
+}
+
+/* .type-messages input[type=file] {
+    display: none;
+} */
+
+.type-messages button {
+    /* height: 80%; */
+    width: 50px;
+    padding: 10px;
+    border-radius: 3px;
+    fill: white;
+}
+
+.type-messages image {
+    color: white;
+    width: 30px;
+
+}
+
+.chatbox h1 {
+    color: white;
+
+}
+
+
+@media screen and (max-width:600px) {
+    .row-flex {
+        flex-direction: column;
+    }
+
+    .all-contacts {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+    }
+
+    .nav {
+        display: none;
+    }
+
+    .chatbox {
+        display: none;
+    }
+
+    #search {
+        height: 40px;
+        ;
+    }
 }
