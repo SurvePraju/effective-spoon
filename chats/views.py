@@ -10,4 +10,5 @@ def home(request):
     login = LoginUserForm()
     context = {"form": form}
     context["login"] = login
+    context["users"] = User.objects.all()
     return render(request, "home.html", context)
