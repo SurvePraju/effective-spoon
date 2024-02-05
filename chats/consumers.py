@@ -18,10 +18,10 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
         print(f"other_user:{other_user_obj.id}")
 
-        temp_room_name = await self.get_or_create_async(user1=owner_obj, user2=other_user_obj)
+        self.temp_room_name = await self.get_or_create_async(user1=owner_obj, user2=other_user_obj)
 
-        print(temp_room_name)
-        self.room_name = temp_room_name
+        # print(self.temp_room_name)
+        self.room_name = self.temp_room_name.id
         self.room_group_name = f"chat_{self.room_name}"
 
         # Join room group
@@ -37,13 +37,13 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
         if existing_obj:
             print(f"Existing Room ID: {existing_obj.id}")
-            return existing_obj.id
+            return existing_obj
         else:
             new_obj = PersonalChatRoom.objects.create()
             new_obj.users.add(user1, user2)
             new_obj.save()
             print(f"New Room ID: {new_obj.id}")
-            return new_obj.id
+            return new_obj
 
     @database_sync_to_async
     def get_user(self, username):
@@ -57,15 +57,27 @@ class ChatConsumer(AsyncWebsocketConsumer):
     async def receive(self, text_data):
         text_data_json = json.loads(text_data)
         message = text_data_json["message"]
+        sender = self.scope["user"]
+        print(f"Mesasage sent by {sender}")
+        await self.store_messages(message)
 
         # Send message to room group
         await self.channel_layer.group_send(
-            self.room_group_name, {"type": "chat.message", "message": message}
+            self.room_group_name, {"type": "chat.message",
+                                   "message": message, "sender": sender}
         )
 
     # Receive message from room group
     async def chat_message(self, event):
         message = event["message"]
-
+        sender = event["sender"]
+        # sender = await self.get_user(username=event["sender"])
+        print(sender.username)
         # Send message to WebSocket
-        await self.send(text_data=json.dumps({"message": message}))
+        await self.send(text_data=json.dumps({"message": message, "sender": sender.username}))
+
+    @database_sync_to_async
+    def store_messages(self, text_messages):
+        Messages.objects.create(
+            room_number=self.temp_room_name,
+            sender=self.scope["user"], text=text_messages).save()

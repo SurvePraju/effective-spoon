@@ -1,5 +1,5 @@
 
-
+//Search Text replace button with a text box
 let insertTextBox = function () {
     let chatboxSearchButton = document.querySelector(".chatbox-search");
     let existingSearchInput = document.querySelector("#search-chat-message");
@@ -40,7 +40,7 @@ document.querySelectorAll(".single-user").forEach((user) => {
 document.querySelector("#message").addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
         const inputValue = document.querySelector("#message");
-        console.log(inputValue.value);
+        // console.log(inputValue.value);
         chatSocket.send(JSON.stringify({ "message": inputValue.value, "sender": roomName }));
         inputValue.value = "";
     }
@@ -62,7 +62,9 @@ chatSocket.onopen = function (e) {
 
 chatSocket.onmessage = function (e) {
     const data = JSON.parse(e.data);
-    console.log(data.message);
+    // console.log(data.message);
+    // console.log(data.sender);
+
 
     const chatBody = document.querySelector(".message-body");
 
@@ -71,11 +73,11 @@ chatSocket.onmessage = function (e) {
 
     // Uncomment and modify this section based on your requirements
     // const roomName = "someRoomName"; // Replace with the actual room name
-    // if (data.sender === roomName) {
-    newMessageBlock.classList.add("message-sent");
-    // } else {
-    //     newMessageBlock.classList.add("message-received");
-    // }
+    if (data.sender == roomName) {
+        newMessageBlock.classList.add("message-received");
+    } else {
+        newMessageBlock.classList.add("message-sent");
+    }
 
     // Create a span to hold the message content
     const messageHolder = document.createElement("span");

@@ -9,5 +9,5 @@ class PersonalChatRoom(models.Model):
 
 class Messages(models.Model):
     room_number = models.ForeignKey(PersonalChatRoom, on_delete=models.CASCADE)
-    sender = models.CharField(max_length=50)
+    sender = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.TextField()
