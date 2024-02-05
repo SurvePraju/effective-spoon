@@ -53,18 +53,17 @@
         </div>
         <div class="messages">
             <div class="message-body">
-                <div class="message-sent"><span>Hii</span></div>
+                {% comment %} <div class="message-sent"><span>Hii</span></div>
                 <div class="message-received"><span>Hello</span></div>
                 <div class="message-sent"><span>Hii</span></div>
-                <div class="message-received"><span>Hello</span></div>
+                <div class="message-received"><span>Hello</span></div> {% endcomment %}
 
             </div>
         </div>
         <div class="type-messages">
             <input type="hidden">
             <button type="button"><img src="{% static 'images/pin-angle.svg' %}" alt=""></button>
-            <form action="" method="post" id="send-message">{%csrf_token%}<input type="text" name="message" id="message"
-                    placeholder="Type a Message"></form>
+            <input type="text" name="message" id="message" placeholder="Type a Message">
             <button type="button"><img src="{% static 'images/mic.svg' %}" alt=""></button>
         </div>
     </div>
