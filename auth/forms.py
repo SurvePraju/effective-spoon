@@ -6,11 +6,7 @@ from django.contrib.auth.models import User
 class RegisterUserForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ["first_name", "last_name", "username",
-                  "email", "password1", "password2"]
-        widget = {
-            "first_name": forms.TextInput(attrs={"class": "form-control"})
-        }
+        fields = ["username", "password1"]
 
 
 class LoginUserForm(AuthenticationForm):

@@ -34,7 +34,7 @@ body {
     height: 30px;
     width: 30px;
     border-radius: 50%;
-    background-color: white;
+    /* background-color: white; */
 
 }
 
@@ -118,7 +118,7 @@ input[type=search] {
 }
 
 body::-webkit-scrollbar {
-    width: 1px;
+    width: 0;
 
 
 }
@@ -174,17 +174,29 @@ body::-webkit-scrollbar {
     align-items: center;
 }
 
-.type-messages input[type=text] {
+#send-message {
     width: 100%;
     height: 60%;
     background-color: rgb(45, 47, 59);
     outline: 0;
     border: 0;
-    padding: 5px;
     padding-left: 10px;
     font-size: 1rem;
     color: white;
     border-radius: 3px;
+}
+
+.type-messages input[type=text] {
+    width: 100%;
+    background-color: rgb(45, 47, 59);
+    outline: 0;
+    height: 60%;
+    font-size: 1rem;
+    color: white;
+    border-radius: 3px;
+    padding: 5px;
+    border: 0;
+
 }
 
 .type-messages input[type=text]:hover {
@@ -215,9 +227,53 @@ body::-webkit-scrollbar {
 
 }
 
-.hide {
-    display: none;
+.message-body {
+    margin: 30px;
+    height: 80%;
+    overflow-y: scroll;
 }
+
+.message-received {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
+
+}
+
+.message-received>span {
+    background-color: rgb(100, 151, 196);
+    padding: 10px;
+    padding-top: 6px;
+    border-radius: 5px;
+
+}
+
+.message-body>::-webkit-scrollbar-track {
+    width: 0px;
+}
+
+.message-sent {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+
+}
+
+.message-sent>span {
+    background-color: rgb(100, 151, 196);
+    padding: 10px;
+    padding-top: 6px;
+    border-radius: 5px;
+
+
+}
+
+
+
 
 @media screen and (max-width:600px) {
     .row-flex {
@@ -242,4 +298,65 @@ body::-webkit-scrollbar {
         height: 40px;
         ;
     }
+}
+
+.user-not-selected {
+    display: flex;
+    width: 67vw;
+    background-color: rgb(45, 47, 59);
+    justify-content: flex-end;
+    padding: 100px;
+    align-items: center;
+    border-left: 1px solid rgb(23, 23, 26);
+    flex-direction: column;
+    color: whitesmoke;
+}
+
+/* .user-not-selected>h3 {
+    margin-top: 60px;
+} */
+
+.user-not-selected>p {
+    opacity: 0.6;
+}
+
+
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 35vw;
+    height: 80vh;
+    background-color: aliceblue;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.hide {
+    display: none;
 }

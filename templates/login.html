@@ -1,0 +1,27 @@
+
+
+
+
+{% include "base.html" %}
+
+
+
+{% block title %}
+Login
+{% endblock title %}
+
+
+
+{% block content %}
+<form action="{% url 'login' %}" method="POST">
+    {% csrf_token %}
+    {{form}}
+    <button type="submit">Submit</button>
+</form>
+
+
+
+<a href="{% url 'register' %}">Register</a>
+
+
+{% endblock content %}
